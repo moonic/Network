@@ -32,11 +32,11 @@
   * 802定义的有效长度值与以太网的有效类型值无一相同，这样，就可以对两种帧格式进行区分
   
 *  在以太网帧格式中，类型字段之后就是数据；而在 8 0 2帧格式中，跟随在后面的是 3字节的802.2 LLC和5字节的802.2 SNAP。
- * 目的服务访问点（ Destination Service Access Point,DSAP）和源服务访问点（Source Service Access Point, SSAP）的值都设为0xaaCtrl字段的值设为3。随后的3个字节o rg code都置为0。再接下来的2个字节类型字段和以太网帧格式一样（其他类型字段值可以参见RFC 1340
-  * CRC字段用于帧内后续字节差错的循环冗余码检验（检验和）（它也被称为F C S或帧检验序列）。
+ * 目的服务访问点（ Destination Service Access Point,DSAP）和源服务访问点（Source Service Access Point, SSAP)值都设为0xaaCtrl字段的值设为3。随后的3个字节orgcode都置为0。再接下来的2个字节类型字段和以太网帧格式一样（其他类型字段值可以参见RFC 1340
+  * CRC字段用于帧内后续字节差错的循环冗余码检验（检验和）（它也被称为FCS或帧检验序列）。
  
  ---
-  
+
 * 尾部封装
  * RFC 893描述了另一种用于以太网的封装格式，称作尾部封装（trailer encapsulation）
  * 早期BSD系统在DEC VA X机上运行时的试验格式，它通过调整I P数据报中字段的次序来提高性能。
