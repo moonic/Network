@@ -1,4 +1,12 @@
 # Http (HyperText Transfer Protocol)
 > 可靠数据传输协议 沟通客户端和服务器的传输协议 常翻译为超文本传输协议纯属误译 应该为超文件传输协议(所有符合协议的文件) 
 
-* Web server and Server *
+* Web server and Server 
+  * web内存存储在web服务器上的使用的是Http协议 如果新客户端发送请求会提供数据
+  *  用户向http 服务器发送请求会在响应返回请求数据 
+  * 客户端服务器构成了 www的基本组件
+ 
+* 资源
+  * web服务器中的静态文件
+  * 数据存储文件 可以更具程序生成的内容 
+  * 媒体等文件
