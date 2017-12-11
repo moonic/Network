@@ -183,6 +183,64 @@ R E T U R N键时，默认值被发送出去。
 命令发送这个端口号（11  z7 4）给服务器。我们也看到一个交互用户命令（ d i r）成为两个F T P
 命令（P O RT和L I S T）
 
+* 匿名FTP
+  * 当有服务器支持时，允许任何人注册并使用F T P来传输文件。使用这个技术可以提供大量的自由信息。
+  怎样找出你正在搜寻的站点是一个完全不同的问题。
+ * 匿名F T P用在站点f t p . u u . n e t上（一个常用的匿名F T P站点）来取本书的勘误
+表文件。要使用匿名F T P，须使用“a n o n y m o u s”（复习数遍就能正确地拼写）用户名来注册。
+当提示输入口令时，输入自己的电子邮箱地址。
+```shell 
+
+sun % ftp ftp.uu.net
+Connected to ftp.uu.net
+220 ftp.UU.NET FTP server (Version 2.0WU(13) Fri Apr 9 20:44:32 EDT 1993) ready
+Name (ftp.uu.net:rstevens):  a n o n y m o u s
+331 Guest login ok, send your complete e-mail addraess as password.
+Password : 键入r s t e v e n s @ n o a o . e d u；它没有回显
+2 3 0 -
+230- Welcome to the UUNET archive.
+230- A service of UUNET Technologies Inc, Falls Church, Virginia
+230- For information about UUNET, call +1 703 204 8000, or see the files
+230- in /uunet-info
+还有一些问候行
+230 Guest login ok, access restrictions apply.
+ftp> cd published/books 换成需要的目录
+250 CWD command successful.
+ftp> b i n a r y 我们将传送一个二进制文件
+200 Type set to I.
+ftp> get stevens.tcpipivl.errata.Z 取文件
+200 PORT command successful.
+150 Opening BINARY mode data connection for stevens.tcpipivl.errata.Z (150 bytes).
+226 Transfer complete. (你可能得到一个不同的文件大小 )
+local: stevens.tcpipivl.errata.Z remote: stevens.tcpipivl.errata.Z
+105 bytes received in 4.1 seconds (0.83 Kbytes/s)
+ftp> q u i t
+221 Goodbye.
+sun % uncompress stevens.tcpipivl.errata.Z
+sun % more stevens.tcpipivl.errata
+``` 
+* 未知IP地址的匿名FTP
+  * 匿名F T P的域名系统（D N S）特征和选路特征结合在一起。在 1 4 . 5节中我
+们谈到D N S中指针查询现象 — 取一个I P地址并返回其主机名。不幸的是并非所有系统管理
+员都能正确地创立涉及指针查询的名服务器。他们经常记得把新主机加入名字到地址匹配的
+文件中，却忘了把他们加入到地址到名字匹配的文件中。对此，可用 t r a c e r o u t e经常看到
+这种现象，即它打印一个I P地址，而不是主机名。
+有些匿名F T P服务器要求客户有一个有效域名。这就允许服务器来记录正在执行传输的主
+机域名。由于服务器在来自客户 I P数据报中收到的关于客户的唯一标识是客户的 I P地址，所
+以服务器能叫D N S来做指针查询，并获得客户的域名。如果负责客户主机的名服务器没有正
+确地创立，指针查询将失败。
+要看清这个错误，我们来做以下诸步骤：
+1) 把主机s l i p（见封2的图）的I P地址换成1 4 0 . 2 5 2 . 1 3 . 6 7。这是给作者子网的一个有效
+I P地址，但没有涉及到n o a o . e d u域的域名服务器。
+2) 把在b s d i上S L I P连接的目的I P地址换成1 4 0 . 2 5 2 . 1 3 . 6 7。
+3) 把将数据报引向1 4 0 . 2 5 2 . 1 3 . 6 7的s u n上的路由表入口加入路由器 b s d i（回忆一下我们
+在9 . 2节中关于这个选路表的讨论）。
+从I n t e r n e t上仍然可以访问我们的主机 s l i p，这是因为在 1 0 . 4节中路由器 g a t e w a y和
+n e t b正好把所有目的是子网 1 4 0 . 2 5 2 . 1 3的所有数据报都发送给路由器 s u n。路由器s u n知道
+利用我们在上述第 3步建立的路由表入口来如何处理这些数据报。我们所创建的是拥有完整
+I n t e r n e t连接性的主机，但没有有效的域名。结果，指针查询 I P地址1 4 0 . 2 5 2 . 1 3 . 6 7将失败。
+现在给一个我们所知的服务器使用匿名 F T P，需要一个有效的域名：
 
 
+ 
 
