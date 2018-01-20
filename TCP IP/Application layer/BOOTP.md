@@ -1,5 +1,5 @@
 # BOOTP
-> B O O T P使用U D P，且通常需与 T F T P（参见第 1 5章）协同工作。 RFC 951 [Croft and
+> BOOTP使用UDP，且通常需与 T F T P（参见第 1 5章）协同工作。 RFC 951 [Croft and
 Gilmore 1985]是B O O T P的正式规范，RFC 1542 [Wimer 1993]则对它作了说明。
 
 * BOOTP 的分组格式
